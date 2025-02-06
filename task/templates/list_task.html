@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boas-vindas</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Task History!</h1>
+    <p>Este é o seu aplicativo de tarefas.</p>
+
+    <a href="{% url 'add_task' %}">Adicionar tarefa</a>
+
+    <h1>Listar Tasks</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Status</th>
+                <th>Usuário Afetado</th>
+                <th>Usuário Ação</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.data }}</td>
+                <td>{{ task.nome }}</td>
+                <td>{{ task.descricao }}</td>
+                <td>{{ task.get_status_display }}</td>
+                <td>{{ task.usuario_afetado }}</td>
+                <td>{{ task.usuario_acao }}</td>
+                <td>
+                    <a href="{% url 'att_task' task.id %}">Atualizar</a>
+                    <a href="{% url 'del_task' task.id %}">Excluir</a>
+                    <a href="{% url 'ver_task' task.id %}">Detalhes</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">Nenhuma task cadastrada</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

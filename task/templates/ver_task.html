@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalhes da Task</title>
+</head>
+<body>
+    <h1>Detalhes da Task</h1>
+    <p><strong>Data:</strong> {{ task.data }}</p>
+    <p><strong>Nome:</strong> {{ task.nome }}</p>
+    <p><strong>Descrição:</strong> {{ task.descricao }}</p>
+    <p><strong>Status:</strong> {{ task.get_status_display }}</p>
+    <p><strong>Usuário Afetado:</strong> {{ task.usuario_afetado }}</p>
+    <p><strong>Usuário Ação:</strong> {{ task.usuario_acao }}</p>
+    <a href="{% url 'list_task' %}">Voltar para a lista</a>
+</body>
+</html>
